@@ -1,0 +1,66 @@
+
+
+
+
+=======================================================================================
+
+
+所有的单词列表页面：
+http://www.51voa.com/Learn_A_Word_1.html
+http://www.51voa.com/Learn_A_Word_2.html
+http://www.51voa.com/Learn_A_Word_3.html
+......
+http://www.51voa.com/Learn_A_Word_40.html
+
+=======================================================================================
+
+从一个单词列表页面(eg:http://www.51voa.com/Learn_A_Word_1.html) 中获取每个单词的页面(eg:http://www.51voa.com/Voa_English_Learning/1953-stream-54673.html)
+
+在下面的 href 值前面需要拼接上 'http://www.51voa.com'，然后打开它
+
+<li> <a href="/Voa_English_Learning/1955-binge-watch-54675.html" target=_blank>1955 binge-watch</a> (14-1-30)</li>
+
+<li> <a href="/Voa_English_Learning/1954-discard-54674.html" target=_blank>1954 discard</a> (14-1-30)</li>
+
+<li> <a href="/Voa_English_Learning/1953-stream-54673.html" target=_blank>1953 stream</a> (14-1-30)</li>
+
+<li> <a href="/Voa_English_Learning/1952-motive-54672.html" target=_blank>1952 motive</a> (14-1-30)</li><li>
+
+
+
+因为这些单词是 倒序排列的，即最新的放在网页最上面，所以需要将每次获取的音频文本写入一个文件的开头，整个文件单词内容才是正序的
+
+=======================================================================================
+
+TASK:
+
+给定一个单词页面，下载音频和文本：
+提取文本内容：
+
+一个单词页面中
+DOM 元素 <a id="mp3" href="http://down.51voa.com/201401/1954-discard.mp3" title="鼠标右键点击下载"></a>
+所在 div 的下一个 div 就是音频文本内容
+
+用 id="mp3" 寻找 mp3 ，用 id="content" 寻找音频内容文本
+
+<div id="menubar">
+	<a id="mp3" href="http://down.51voa.com/201401/1944-cost-of-living.mp3" title="鼠标右键点击下载"></a>
+	<a id="help" href="/intro/help.html" target=_blank></a><BR>
+</div>
+<div id="content">今天我们要学的词是   。。。。</div>
+
+
+=======================================================================================
+
+TMP:
+
+
+# patternMp3 = r'(?<=http[\w//]+)[\w-]+\.mp3'
+# patternMp3 = r'(?<=http[\w]*)[\w-]+\.mp3'
+# patternMp3 = r'[\w-]+\.mp3(?=\"\s)'
+# print re.findall(patternMp3, content)
+
+# patternMp3b = r'http[\w/-]+\.mp3(?=\"\s)'
+# print re.findall(patternMp3b, content)
+
+
